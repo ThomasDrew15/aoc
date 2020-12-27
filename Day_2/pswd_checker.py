@@ -3,10 +3,14 @@
 with open("passes.txt", "r") as f:
     pswds = [ str(i) for i in f ]
 
+validPasswords = 0
+invalidPasswords = 0
+notInString = 0
+
 
 for i in pswds:
     string = str(i)
-    print(string)
+   # print(string)
 
         #split strong by whitepsace
     stringsplit = string.split()
@@ -19,6 +23,11 @@ for i in pswds:
         #count how often substring letter appears in password
     count =stringsplit[2].count(substring[0])
 #print(count)
+
+    if substring[0] not in stringsplit[2]:
+        print("not in string")
+        notInString +=1
+        continue
 
 
         #get parameters for how often letter should appear
@@ -34,16 +43,17 @@ for i in pswds:
     highValue = int(splitCountValues[1])
 #print(lowValue, "and", highValue)
 
-    validPasswords = 0
+
 
         #if/else statement to decide if password valid
         #password is valid if letter is counted between low and high values
     if count >= highValue or count <= lowValue:
         print("password not valid")
+        invalidPasswords +=1
     else:
         print("password valid")
-        #validPasswords = 0
-        validPasswords = (validPasswords +1)
+        validPasswords +=1
         
 
-print("there are:", validPasswords, "valid passwords")
+totalPasswords = validPasswords + invalidPasswords + notInString
+print("there are:", validPasswords, "valid passwords", invalidPasswords, "invalid passwords and", notInString, "not in string", totalPasswords, "all together")
