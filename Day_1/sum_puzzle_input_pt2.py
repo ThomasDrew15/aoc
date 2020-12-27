@@ -24,6 +24,8 @@ result = (int1 * int2 * int3)
 #print answer
 print(result)
 
+f.close()
+
 
 
 

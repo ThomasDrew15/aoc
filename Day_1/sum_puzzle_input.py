@@ -23,7 +23,7 @@ result = (int1 * int2 )
 #print answer
 print(result)
 
-
+f.close()
 
 
 
